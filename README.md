@@ -1,24 +1,33 @@
 # Fishing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+自分が釣った魚を投稿したり、他の人の投稿を閲覧したり、コメント欄で語りあったり出来るサイトです。
 
-* System dependencies
+### テーマを選んだ理由
 
-* Configuration
+趣味の釣りで自分が釣った魚を共有したいと思い釣り専用のSNSがあればいいと考えました。
+自分が使っている道具の紹介や釣りをしている場所の共有が出来たらもっと楽しく釣りができると思い制作しました。
 
-* Database creation
 
-* Database initialization
+### ターゲットユーザ
+- 釣りが好きな人
+- 最近釣りを始めた人
+- 釣り仲間を探している人
 
-* How to run the test suite
+### 主な利用シーン
+- 魚を釣り上げて写真を投稿したい人
+- 便利な釣り道具を紹介、探している人
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 設計書
+- OS : Linux(CentOS)
+- 言語 : HTML,CSS,JavaScript,SQL
+- フレームワーク : Ruby on Rails
+- JSライブラリ : jQuery
+- IDE : Cloud9
 
-* ...
+## 開発環境
+
