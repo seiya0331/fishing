@@ -1,0 +1,10 @@
+<div class="continer">
+  <div class="row">
+    <div class="col">
+      <%= @tweets.each do |tweet| %>
+      <p><%= tweet.text %></p>
+      <p>ユーザーネーム: <%= tweet.user.name %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
