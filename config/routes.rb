@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
 
   #ユーザー側 新規登録・ログイン・ログアウト
-  devise_for :users,skip: [:passwords], controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
+  devise_for :users, controllers: {
+    sessions: 'user/sessions',
+    passwords: 'user/passwords',
+    registrations: 'user/registrations'
   }
 
   #ユーザー側機能

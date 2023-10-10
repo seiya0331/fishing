@@ -17,6 +17,7 @@ class User::TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save
+    @tweets = Tweet.all
     render :index
   end
 
@@ -26,6 +27,6 @@ class User::TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:user_id, :text)
+    params.require(:tweet).permit(:text)
   end
 end

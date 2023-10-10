@@ -1,9 +1,9 @@
 <div class="continer">
   <div class="row">
     <div class="col">
+      <h1>投稿一覧</h1>
       <%= @tweets.each do |tweet| %>
       <p><%= tweet.text %></p>
-      <p>ユーザーネーム: <%= tweet.user.name %></p>
       <% end %>
     </div>
   </div>
