@@ -1,13 +1,18 @@
+<!-- ユーザーの詳細  -->
 <div class="continer">
   <div class="row">
     <div class="col">
-      <h1>投稿一覧</h1>
-      <%= @tweets.each do |tweet| %>
+      <div>
+        <h3><%= @user.name %></h3>
+        <%= image_tag @user.get_profile_image(100,100) %>
+      </div>
+<!-- ユーザーの投稿一覧 -->
+      <% @tweets.each do |tweet| %>
       <div>
         <%= link_to tweet_path(tweet.id) do %>
           <%= image_tag tweet.get_image %>
         <% end %>
-        <p>投稿ユーザー画像:<%= image_tag 'sample-author1.jpg' %></p>
+        <p>投稿ユーザー画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
         <p>投稿テキスト<%= tweet.text %></p>
         <p>ユーザーネーム:<%= tweet.user.name %></p>
       </div>

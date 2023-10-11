@@ -58,7 +58,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
-end 
+end
+
+gem 'image_processing', '~> 1.2'
 
 gem "net-smtp"
 gem "net-pop"
