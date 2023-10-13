@@ -1,0 +1,12 @@
+<% if tweet.favorited_by?(current_user) %>
+  <%= link_to tweet_favorites_path(tweet), method: :delete do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= tweet.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to tweet_favorites_path(tweet), method: :post do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= tweet.favorites.count %> いいね
+  <% end %>
+<% end %>
+

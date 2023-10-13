@@ -5,16 +5,22 @@
       <div>
         <h3><%= @user.name %></h3>
         <%= image_tag @user.get_profile_image(100,100) %>
+        <% if @user == current_user %>
+          <p><%= link_to "プロフィール編集", edit_user_path %></p>
+        <% end %>
       </div>
 <!-- ユーザーの投稿一覧 -->
       <% @tweets.each do |tweet| %>
       <div>
-        <%= link_to tweet_path(tweet.id) do %>
+        <%= link_to tweet_path(tweet) do %>
           <%= image_tag tweet.get_image %>
         <% end %>
         <p>投稿ユーザー画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
         <p>投稿テキスト<%= tweet.text %></p>
         <p>ユーザーネーム:<%= tweet.user.name %></p>
+        <P>コメント数:<%= tweet.tweet_comments.count %></P>
+        <%= render "user/tweet_comments/index", tweet: tweet %>
+        <%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %>
       </div>
       <% end %>
     </div>

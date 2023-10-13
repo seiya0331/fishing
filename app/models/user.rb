@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   #アソシエーション
   has_many :tweets, dependent: :destroy
+  has_many :tweet_comments, dependent: :destroy
 
   has_one_attached :profile_image
    def get_profile_image(width, height)

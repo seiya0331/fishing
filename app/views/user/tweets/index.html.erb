@@ -4,12 +4,15 @@
       <h1>投稿一覧</h1>
       <%= @tweets.each do |tweet| %>
       <div>
-        <%= link_to tweet_path(tweet.id) do %>
+        <%= link_to tweet_path(tweet) do %>
           <%= image_tag tweet.get_image %>
         <% end %>
-        <p>投稿ユーザー画像:<%= image_tag 'sample-author1.jpg' %></p>
         <p>投稿テキスト<%= tweet.text %></p>
+        <p>プロフィール画像:<%= image_tag tweet.user.get_profile_image(100,100) %></p>
         <p>ユーザーネーム:<%= tweet.user.name %></p>
+        <p><%= render "user/favorites/btn", tweet: tweet %></p>
+        <p><%= render "user/tweet_comments/index", tweet: tweet %></p>
+        <p><%#= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %></p>
       </div>
       <% end %>
     </div>
