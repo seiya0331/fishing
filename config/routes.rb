@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   }
 
 
-  
+  #ゲストログイン
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
+ end
 
   #ユーザー側 新規登録・ログイン・ログアウト
   devise_for :users, controllers: {
@@ -21,7 +24,11 @@ Rails.application.routes.draw do
       resources :tweet_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+  	    get "followings" => "relationships#followings", as: "followings"
+  	    get "followers" => "relationships#followers", as: "followers"
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

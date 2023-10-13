@@ -1,0 +1,16 @@
+<% tweets.each do |tweet| %>
+  <div>
+    <%= link_to tweet_path(tweet) do %>
+      <%= image_tag tweet.get_image %>
+    <% end %>
+    <p>プロフィール画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
+    <p>投稿テキスト<%= tweet.text %></p>
+    <p>ユーザーネーム:<%= tweet.user.name %></p>
+    <P>コメント数:<%= tweet.tweet_comments.count %></P>
+    <p>フォロー数:<%= link_to user.followings.count, user_followings_path(user) %></p>
+    <p>フォロワー数:<%= link_to user.followers.count, user_followers_path(user) %></p>
+    <%= render "user/relationships/btn", user: user %>
+    <%= render "user/tweet_comments/index", tweet: tweet %>
+    <%#= render "user/tweet_comments/form", tweet: tweet, tweet_comment: tweet_comment %>
+  </div>
+<% end %>
