@@ -21,7 +21,7 @@ class User::TweetsController < ApplicationController
     @tweet.user_id = current_user.id
     @tweet.save
     @tweets = Tweet.all
-    render :index
+    redirect_to tweets_path
   end
 
   def destroy

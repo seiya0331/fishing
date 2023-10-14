@@ -7,10 +7,11 @@
     <p>投稿テキスト<%= tweet.text %></p>
     <p>ユーザーネーム:<%= tweet.user.name %></p>
     <P>コメント数:<%= tweet.tweet_comments.count %></P>
-    <p>フォロー数:<%= link_to user.followings.count, user_followings_path(user) %></p>
-    <p>フォロワー数:<%= link_to user.followers.count, user_followers_path(user) %></p>
-    <%= render "user/relationships/btn", user: user %>
+    <p>フォロー数:<%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></p>
+    <p>フォロワー数:<%= link_to tweet.user.followers.count, user_followers_path(tweet.user) %></p>
+    <%= render "user/favorites/btn", tweet: tweet %>
+    <%= render "user/relationships/btn", user: tweet.user %>
     <%= render "user/tweet_comments/index", tweet: tweet %>
-    <%#= render "user/tweet_comments/form", tweet: tweet, tweet_comment: tweet_comment %>
+    <%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %>
   </div>
 <% end %>
