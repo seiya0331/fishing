@@ -1,0 +1,7 @@
+<% if @model == 'user' %>
+    <h3>Users search for "<%= @content %>"</h3>
+  <%= render "user/users/index", users: @records %>
+<% elsif @model == 'tweet' %>
+    <h3>Tweets search for "<%= @content %>"</h3>
+  <%= render "user/tweets/index", tweets: @records %>
+<% end %>

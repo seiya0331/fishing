@@ -8,6 +8,18 @@ class Tweet < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Tweet.where(text: content)
+    elsif method == 'forward'
+      Tweet.where('text LIKE ?', content + '%')
+    elsif method == 'backward'
+      Tweet.where('text LIKE ?', '%' + content)
+    else
+      Tweet.where('text LIKE ?', '%' + content + '%')
+    end
+  end
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
