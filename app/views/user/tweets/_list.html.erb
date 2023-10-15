@@ -6,7 +6,7 @@
     <p>プロフィール画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
     <p>投稿テキスト<%= tweet.text %></p>
     <p>ユーザーネーム:<%= tweet.user.name %></p>
-    <P id="comment_counter">
+    <P id="comment_counter_<%= tweet.id %>">
       コメント数:<%= tweet.tweet_comments.count %>
     </P>
     <p>フォロー数:<%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></p>
@@ -15,7 +15,7 @@
     <%= render "user/favorites/btn", tweet: tweet %>
     </p>
     <p><%= render "user/relationships/btn", user: tweet.user %></p>
-    <p class="comment_index">
+    <p id="comment_index_<%= tweet.id %>">
       <%= render "user/tweet_comments/index", tweet: tweet %>
     </p>
     <p><%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %></p>
