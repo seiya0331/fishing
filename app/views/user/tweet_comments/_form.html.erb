@@ -1,6 +1,4 @@
-<div>
   <%= form_with model: [tweet, tweet_comment], local: false, url: tweet_tweet_comments_path(tweet_id: tweet.id) do |f| %>
     <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに", id: "comment_textarea_#{tweet.id}" %>
     <%= f.submit "送信" %>
   <% end %>
-</div>

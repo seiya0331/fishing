@@ -1,3 +1,3 @@
-$('#comment_counter_<%= tweet.id %>').html("<%= j(render 'user/tweet_comments/counter', tweet: @comment.tweet) %>");
-$('#comment_index_<%= tweet.id %>').html("<%= j(render 'user/tweet_comments/index', tweet: @comment.tweet) %>");
-$('#comment_textarea_#{tweet.id}').val("");
+$('#comment_counter_<%= @tweet.id %>').html("<%= j(render 'user/tweet_comments/counter', tweet: @comment.tweet) %>");
+$('#comment_index_<%= @tweet.id %>').html("<%= j(render 'user/tweet_comments/index', tweet: @comment.tweet) %>");
+$('#comment_textarea_<%= @tweet.id %>').val("");
