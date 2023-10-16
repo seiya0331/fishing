@@ -8,7 +8,9 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :tweet_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   # フォローしている関連付け
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォローされている関連付け
@@ -29,7 +31,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+  # 検索機能
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)

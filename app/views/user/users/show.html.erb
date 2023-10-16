@@ -9,6 +9,22 @@
           <p><%= link_to "プロフィール編集", edit_user_path %></p>
         <% end %>
         <%= link_to "いいねした投稿",favorites_user_path(@user) %>
+        <div>
+          <% unless @user.id == current_user.id %>
+            <% if (current_user.following? @user) && (@user.following? current_user)  %>
+            <% if @isRoom == true %>
+              <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+              <% end %>
+            <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
 <!-- ユーザーの投稿一覧 -->
       <%= render "user/tweets/list", tweets: @tweets, user: @user %>
