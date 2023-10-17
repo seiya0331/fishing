@@ -1,23 +1,37 @@
-<% tweets.each do |tweet| %>
-  <div>
+<div
+<div class="card-list-container py-5">
+  <% tweets.each do |tweet| %>
+  <div "card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to tweet_path(tweet) do %>
       <%= image_tag tweet.get_image %>
     <% end %>
-    <p>プロフィール画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
-    <p>投稿テキスト<%= tweet.text %></p>
-    <p>ユーザーネーム:<%= tweet.user.name %></p>
-    <P id="comment_counter_<%= tweet.id %>">
-      コメント数:<%= tweet.tweet_comments.count %>
-    </P>
-    <p>フォロー数:<%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></p>
-    <p>フォロワー数:<%= link_to tweet.user.followers.count, user_followers_path(tweet.user) %></p>
-    <p id="favorite_btn_<%= tweet.id %>">
-    <%= render "user/favorites/btn", tweet: tweet %>
-    </p>
-    <p><%= render "user/relationships/btn", user: tweet.user %></p>
-    <div id="comment_index_<%= tweet.id %>">
-      <%= render "user/tweet_comments/index", tweet: tweet %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <p>プロフィール画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
+        </div>
+        <div class="col-6">
+          <p class="card-title">
+          <p>投稿テキスト<%= tweet.text %></p>
+          <p>ユーザーネーム:<%= tweet.user.name %></p>
+          <P id="comment_counter_<%= tweet.id %>">
+            コメント数:<%= tweet.tweet_comments.count %>
+          </P>
+          <p>フォロー数:<%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></p>
+          <p>フォロワー数:<%= link_to tweet.user.followers.count, user_followers_path(tweet.user) %></p>
+          <div id="favorite_btn_<%= tweet.id %>">
+            <%= render "user/favorites/btn", tweet: tweet %>
+          </div>
+          <div><%= render "user/relationships/btn", user: tweet.user %></div>
+          <div id="comment_index_<%= tweet.id %>">
+            <%= render "user/tweet_comments/index", tweet: tweet %>
+          </div>
+          <div>
+            <%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div><%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %></div>
   </div>
-<% end %>
+  <% end %>
+</div>
