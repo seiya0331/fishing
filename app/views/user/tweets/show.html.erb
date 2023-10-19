@@ -1,19 +1,56 @@
-<div class="continer">
-  <div class="row">
-    <div class="col">
-      <div>
-        <%= image_tag @tweet.get_image %>
+<div class="continer p-5">
+  <div class="row ml-3 mb-5">
+
+      <h4 style="background-color: #dcdcdc;">　投稿詳細　</h4>
+
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+        <%= image_tag @tweet.get_image, size: "250x200" %>
         <p><%= @tweet.text %></p>
-        <p>プロフィール画像:<%= image_tag @tweet.user.get_profile_image(100,100) %></p>
-        <p>ユーザーネーム:<%= @tweet.user.name %></p>
-        <p id="favorite_btn_<%= @tweet.id %>">
-          いいね:<%= render "user/favorites/btn", tweet: @tweet %>
-        </p>
-        <p>投稿日:<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
-        <% if @tweet.user == current_user %>
-          <%= link_to "削除", tweet_path(@tweet), method: :delete %>
-        <% end %>
-      </div>
+    </div>
+
+    <div class="col-4">
+      <table class="table table-borderless">
+        <tr>
+          <td style="width: 30%">アイコン</td>
+          <td><%= image_tag @tweet.user.get_profile_image(100,100) %></td>
+        </tr>
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= @tweet.user.name %></td>
+        </tr>
+        <tr>
+          <td>いいね</td>
+          <td id="favorite_btn_<%= @tweet.id %>">
+            <%= render "user/favorites/btn", tweet: @tweet %>
+          </td>
+        <tr>
+          <td>投稿日</td>
+          <td><%= @tweet.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>
+          <% if @tweet.user == current_user %>
+            <%= link_to "編集", edit_tweet_path(@tweet), class: "btn btn-sm btn-success" %>
+            <%= link_to "削除", tweet_path(@tweet), method: :delete, class: "btn btn-sm btn-danger" %>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-borderless">
+        <tr>
+          <td id="comment_index_<%= @tweet.id %>">
+            <%= render "user/tweet_comments/index", tweet: @tweet %>
+          </td>
+          <td>
+            <%= render "user/tweet_comments/form", tweet: @tweet, tweet_comment: @tweet_comment %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

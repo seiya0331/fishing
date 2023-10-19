@@ -1,37 +1,50 @@
-<div
-<div class="card-list-container py-5">
-  <% tweets.each do |tweet| %>
-  <div "card w-50 mx-auto mt-4 shadow-lg">
-    <%= link_to tweet_path(tweet) do %>
-      <%= image_tag tweet.get_image %>
-    <% end %>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-4">
-          <p>プロフィール画像：<%= image_tag tweet.user.get_profile_image(100,100) %></p>
-        </div>
-        <div class="col-6">
-          <p class="card-title">
-          <p>投稿テキスト<%= tweet.text %></p>
-          <p>ユーザーネーム:<%= tweet.user.name %></p>
-          <P id="comment_counter_<%= tweet.id %>">
-            コメント数:<%= tweet.tweet_comments.count %>
-          </P>
-          <p>フォロー数:<%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></p>
-          <p>フォロワー数:<%= link_to tweet.user.followers.count, user_followers_path(tweet.user) %></p>
-          <div id="favorite_btn_<%= tweet.id %>">
+<div class="continer">
+  <div class="row my-3 ml-5">
+  <h4 style="background-color: #dcdcdc;">　投稿一覧　</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 offset-sm-1">
+      <table class="table">
+        <thead>
+          <tr bgcolor="#dcdcdc">
+            <th>投稿画像</th>
+            <th>アイコン</th>
+            <th>投稿テキスト</th>
+            <th>名前</th>
+            <th>コメント数</th>
+            <th>フォロー</th>
+            <th>フォロワー</th>
+            <th>いいね</th>
+            <th>フォローボタン</th>
+          </tr>
+        </thead>
+        <% tweets.each do |tweet| %>
+        <tr>
+          <td>
+            <%= link_to tweet_path(tweet) do %>
+              <%= image_tag tweet.get_image , size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= image_tag tweet.user.get_profile_image(100,100) %></td>
+          <td><%= tweet.text %></td>
+          <td>
+            <%= link_to user_path(tweet.user.id) do %>
+             <%= tweet.user.name %>
+            <% end %>
+          </td>
+          <td id="comment_counter_<%= tweet.id %>">
+            <%= tweet.tweet_comments.count %>
+          </td>
+          <td><%= link_to tweet.user.followings.count, user_followings_path(tweet.user) %></td>
+          <td><%= link_to tweet.user.followers.count, user_followers_path(tweet.user) %></td>
+          <td id="favorite_btn_<%= tweet.id %>">
             <%= render "user/favorites/btn", tweet: tweet %>
-          </div>
-          <div><%= render "user/relationships/btn", user: tweet.user %></div>
-          <div id="comment_index_<%= tweet.id %>">
-            <%= render "user/tweet_comments/index", tweet: tweet %>
-          </div>
-          <div>
-            <%= render "user/tweet_comments/form", tweet: tweet, tweet_comment: @tweet_comment %>
-          </div>
-        </div>
-      </div>
+          </td>
+          <td><%= render "user/relationships/btn", user: tweet.user %></td>
+        </tr>
+        <% end %>
+      </table>
     </div>
   </div>
-  <% end %>
 </div>

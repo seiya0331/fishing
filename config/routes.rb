@@ -4,11 +4,18 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
 
+  # 管理者側機能
+  namespace :admin do
+    root 'homes#top'
+    resources :users, only: [:show, :edit, :update]
+    resources :tweets, only: [:index, :show, :edit, :update, :destroy]
+    resources :tweet_comments, only: [:create, :destroy]
+  end
 
   #ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
- end
+  end
 
   #ユーザー側 新規登録・ログイン・ログアウト
   devise_for :users, controllers: {
