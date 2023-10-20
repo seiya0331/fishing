@@ -27,6 +27,7 @@
             <% end %>
           <% end %>
           <%= link_to "いいねした投稿",favorites_user_path(@user), class:"btn btn-success" %>
+          <%= render "user/relationships/btn", user: @user %>
         </div>
     </div>
   </div>

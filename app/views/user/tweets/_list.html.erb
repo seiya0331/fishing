@@ -16,7 +16,6 @@
             <th>フォロー</th>
             <th>フォロワー</th>
             <th>いいね</th>
-            <th>フォローボタン</th>
           </tr>
         </thead>
         <% tweets.each do |tweet| %>
@@ -41,7 +40,6 @@
           <td id="favorite_btn_<%= tweet.id %>">
             <%= render "user/favorites/btn", tweet: tweet %>
           </td>
-          <td><%= render "user/relationships/btn", user: tweet.user %></td>
         </tr>
         <% end %>
       </table>

@@ -1,6 +1,6 @@
 <div class="container p-5">
   <div class="row">
-      <h4 style="background-color: #dcdcdc;"><%= @tweet.user.name.id %>さんの会員詳細</h4>
+      <h4 style="background-color: #dcdcdc;"><%= @tweet.user.name %>さんの投稿詳細</h4>
   </div>
   <div class="row">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
@@ -11,7 +11,7 @@
         </tr>
         <tr>
           <th>氏名</th>
-          <td><%= @tweet.user.name.id %></td>
+          <td><%= @tweet.user.name %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>

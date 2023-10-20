@@ -10,8 +10,18 @@
         <!--管理者ログイン時のヘッダー-->
         <% if admin_signed_in? %>
           <li>
+            <%= link_to admin_users_path, class: 'nav-link text-light' do %>
+              Users
+            <% end %>
+          </li>
+          <li>
             <%= link_to admin_tweets_path, class: 'nav-link text-light' do %>
               Tweets
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_tweet_comments_path, class: 'nav-link text-light' do %>
+              Comments
             <% end %>
           </li>
           <li>
@@ -45,6 +55,16 @@
         <% else %>
           
           <!--ログイン前のヘッダー-->
+          <li>
+            <%= link_to root_path, class: 'nav-link text-light' do %>
+              Home
+            <% end %>
+          </li>
+          <li>
+            <%#= link_to home_about_path, class: 'nav-link text-light' do %>
+              About
+            <%# end %>
+          </li>
           <li>
             <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
               Sign up

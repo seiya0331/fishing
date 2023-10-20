@@ -1,5 +1,5 @@
 <div class="continer p-5">
-  <div class="row ml-3 mb-5">
+  <div class="row ml-3 mb-3">
 
       <h4 style="background-color: #dcdcdc;">　投稿詳細　</h4>
 
@@ -40,13 +40,14 @@
         </tr>
       </table>
     </div>
-    <div class="col-4">
+  </div>
+    <div class="col-md-8 offset-md-1">
       <table class="table table-borderless">
         <tr>
           <td id="comment_index_<%= @tweet.id %>">
             <%= render "user/tweet_comments/index", tweet: @tweet %>
           </td>
-          <td>
+          <td "col-md-8">
             <%= render "user/tweet_comments/form", tweet: @tweet, tweet_comment: @tweet_comment %>
           </td>
         </tr>

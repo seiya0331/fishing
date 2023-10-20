@@ -12,7 +12,7 @@
         <td><%= image_tag user.get_profile_image(100,100) %></td>
         <td><%= user.name %></td>
         <td><%= render "user/relationships/btn", user: user %></td>
-        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        <td><%= link_to 'User', user, class: "user_#{user.id}",  class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>
