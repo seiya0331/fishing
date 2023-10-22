@@ -1,6 +1,6 @@
 <div class="continer">
   <div class="row my-3 ml-5">
-    <h4 style="background-color: #dcdcdc;">　コメント一覧　</h4>
+    <h4 style="background-color: #dcdcdc;">コメント一覧</h4>
   </div>
 
   <div class="row">
@@ -8,8 +8,9 @@
       <table class="table">
         <thead>
           <tr bgcolor="#dcdcdc">
-            <th>会員ID</th>
+            <th>コメントID</th>
             <th>氏名</th>
+            <th>メールアドレス</th>
             <th>ツイートID</th>
             <th>コメント</th>
           </tr>
@@ -17,14 +18,14 @@
         <% @comments.each do |comment| %>
         <tr>
           <td><%= comment.id %></td>
-          <td><%= link_to comment.user.name, admin_tweet_comment(comment.id) %></td>
-          <td><%= user.email %></td>
+          <td><%= link_to comment.user.name, admin_tweet_comment_path(comment.id) %></td>
+          <td><%= comment.user.email %></td>
           <td><%= comment.tweet.id %></td>
-          <td><%= comment.text %></td>
+          <td><%= comment.comment %></td>
         </tr>
         <% end %>
       </table>
     </div>
   </div>
-  <%= paginate @users %>
+  <%= paginate @comments %>
 </div>

@@ -34,24 +34,19 @@
           <td>
           <% if @tweet.user == current_user %>
             <%= link_to "編集", edit_tweet_path(@tweet), class: "btn btn-sm btn-success" %>
-            <%= link_to "削除", tweet_path(@tweet), method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to "削除", tweet_path(@tweet), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-sm btn-danger" %>
           <% end %>
           </td>
         </tr>
       </table>
     </div>
   </div>
-    <div class="col-md-8 offset-md-1">
-      <table class="table table-borderless">
-        <tr>
-          <td id="comment_index_<%= @tweet.id %>">
-            <%= render "user/tweet_comments/index", tweet: @tweet %>
-          </td>
-          <td "col-md-8">
-            <%= render "user/tweet_comments/form", tweet: @tweet, tweet_comment: @tweet_comment %>
-          </td>
-        </tr>
-      </table>
+  <div class="col-md-8">
+    <div id="comment_index_<%= @tweet.id %>">
+      <%= render "user/tweet_comments/index", tweet: @tweet %>
+    </div>
+    <div "col-md-8">
+      <%= render "user/tweet_comments/form", tweet: @tweet, tweet_comment: @tweet_comment %>
     </div>
   </div>
 </div>

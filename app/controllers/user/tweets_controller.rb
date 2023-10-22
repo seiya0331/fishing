@@ -16,19 +16,23 @@ class User::TweetsController < ApplicationController
   def edit
     @tweet = Tweet.find(params[:id])
   end
-  
+
   def update
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params)
-    redirect_to tweet_path(tweet.id)  
+    redirect_to tweet_path(tweet.id)
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save
-    @tweets = Tweet.all
-    redirect_to tweets_path
+    if @tweet.save
+      flash[:notice] = "投稿に成功しました。"
+      redirect_to tweets_path
+    else
+      flash.now[:alert] = "投稿に失敗しました。"
+      render :new
+    end
   end
 
   def destroy

@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   # 管理者側機能
   namespace :admin do
     root 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :tweets, only: [:index, :show, :edit, :update, :destroy]
-    resources :tweet_comments, only: [:index, :show]
+    resources :users, only: [:index, :show, :destroy]
+    resources :tweets, only: [:index, :show, :destroy]
+    resources :tweet_comments, only: [:index, :show, :destroy]
   end
 
   #ゲストログイン
@@ -23,10 +23,11 @@ Rails.application.routes.draw do
     passwords: 'user/passwords',
     registrations: 'user/registrations'
   }
-  # get "home/about"=>"homes#about"
+  
   #ユーザー側機能
   scope module: 'user' do
     root 'homes#top'
+    get "home/about"=>"homes#about"
     resources :tweets, only: [:new, :index, :show, :edit,:create, :update, :destroy] do
       resources :tweet_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

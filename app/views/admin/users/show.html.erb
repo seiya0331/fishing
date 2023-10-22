@@ -6,7 +6,7 @@
     <div class="col-sm-8 px-sm-0 offset-sm-1">
       <table class="table table-borderless">
         <tr>
-          <th>UserID</th>
+          <th>ユーザーID</th>
           <td><%= @user.id %></td>
         </tr>
         <tr>
@@ -24,6 +24,9 @@
         <tr>
           <th>登録日時</th>
           <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+         <tr>
+          <td><%= link_to "削除", admin_user_path(@user), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-sm btn-danger" %></td>
         </tr>
       </table>
     </div>

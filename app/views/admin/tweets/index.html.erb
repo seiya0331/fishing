@@ -8,7 +8,7 @@
       <table class="table">
         <thead>
           <tr bgcolor="#dcdcdc">
-            <th>会員ID</th>
+            <th>投稿ID</th>
             <th>氏名</th>
             <th>メールアドレス</th>
             <th>プロフィール画像</th>
@@ -18,8 +18,8 @@
         </thead>
         <% @tweets.each do |tweet| %>
         <tr>
-          <td><%= tweet.user.id %></td>
-          <td><%= link_to tweet.user.name, admin_tweet_path(tweet.user.id) %></td>
+          <td><%= tweet.id %></td>
+          <td><%= link_to tweet.user.name, admin_tweet_path(tweet) %></td>
           <td><%= tweet.user.email %></td>
           <td><%= image_tag tweet.user.get_profile_image(100,100) %></td>
           <td><%= image_tag tweet.get_image, size: "100x100" %></td>

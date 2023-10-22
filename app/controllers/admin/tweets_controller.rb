@@ -1,11 +1,15 @@
 class Admin::TweetsController < ApplicationController
   def index
     @tweets = Tweet.all.page(params[:page]).per(10)
-    @tweet_comment = TweetComment.new
   end
 
-   def show
+  def show
     @tweet = Tweet.find(params[:id])
-    @tweet_comment = TweetComment.new
+  end
+  
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to admin_tweets_path
   end
 end
