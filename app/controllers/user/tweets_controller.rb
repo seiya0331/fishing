@@ -4,7 +4,7 @@ class User::TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.page(params[:page])
     @tweet_comment = TweetComment.new
   end
 

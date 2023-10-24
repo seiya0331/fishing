@@ -4,7 +4,7 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tweet = Tweet.all
-    @tweets = @user.tweets
+    @tweets = @user.tweets.page(params[:page])
     @tweet_comment = TweetComment.new
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
