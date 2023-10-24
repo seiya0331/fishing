@@ -36,8 +36,7 @@ class User::UsersController < ApplicationController
   end
 
   def favorites
-    fovorites = Favorite.where(user_id: @user.id).pluck(:tweet_id)
-    @tweets = Tweet.find(fovorites)
+    @tweets = @user.favorite_tweets.page(params[:page])
     @tweet_comment = TweetComment.new
   end
 
