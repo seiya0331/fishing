@@ -9,7 +9,7 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= image_tag user.get_profile_image(100,100), class: "img-thumbnail" %></td>
         <td><%= user.name %></td>
         <td><%= render "user/relationships/btn", user: user %></td>
         <td><%= link_to 'User', user, class: "user_#{user.id}",  class: "btn btn-success" %></td>

@@ -22,10 +22,10 @@
         <tr>
           <td>
             <%= link_to tweet_path(tweet) do %>
-              <%= image_tag tweet.get_image , size: "100x100" %>
+              <%= image_tag tweet.get_image, class: "img-thumbnail", size: "100x100" %>
             <% end %>
           </td>
-          <td><%= image_tag tweet.user.get_profile_image(100,100) %></td>
+          <td><%= image_tag tweet.user.get_profile_image(100,100), class: "img-thumbnail" %></td>
           <td><%= tweet.text %></td>
           <td>
             <%= link_to user_path(tweet.user.id) do %>

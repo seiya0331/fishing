@@ -7,7 +7,7 @@
 
   <div class="row justify-content-center">
     <div class="col-4">
-        <%= image_tag @tweet.get_image, size: "250x200" %>
+        <%= image_tag @tweet.get_image, class: "img-thumbnail", size: "250x200" %>
         <p><%= @tweet.text %></p>
     </div>
 
@@ -15,7 +15,7 @@
       <table class="table table-borderless">
         <tr>
           <td style="width: 30%">アイコン</td>
-          <td><%= image_tag @tweet.user.get_profile_image(100,100) %></td>
+          <td><%= image_tag @tweet.user.get_profile_image(100,100), class: "img-thumbnail" %></td>
         </tr>
         <tr>
           <td>ユーザーネーム</td>
