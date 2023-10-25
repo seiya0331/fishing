@@ -17,6 +17,7 @@ module Fishing
     # in config/environments, which are processed later.
     #
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
 
     # config.eager_load_paths << Rails.root.join("extras")
   end
