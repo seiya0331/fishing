@@ -1,12 +1,12 @@
 class Admin::TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all.page(params[:page]).per(10)
+    @tweets = Tweet.all.page(params[:page]).per(5)
   end
 
   def show
     @tweet = Tweet.find(params[:id])
   end
-  
+
   def destroy
     tweet = Tweet.find(params[:id])
     tweet.destroy

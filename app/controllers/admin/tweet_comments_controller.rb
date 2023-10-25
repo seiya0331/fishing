@@ -1,6 +1,6 @@
 class Admin::TweetCommentsController < ApplicationController
   def index
-    @comments = TweetComment.all.page(params[:page]).per(10)
+    @comments = TweetComment.all.page(params[:page]).per(5)
   end
 
   def show

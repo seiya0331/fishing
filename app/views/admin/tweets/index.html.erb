@@ -21,13 +21,13 @@
           <td><%= tweet.id %></td>
           <td><%= link_to tweet.user.name, admin_tweet_path(tweet) %></td>
           <td><%= tweet.user.email %></td>
-          <td><%= image_tag tweet.user.get_profile_image(100,100) %></td>
-          <td><%= image_tag tweet.get_image, size: "100x100" %></td>
+          <td><%= image_tag tweet.user.get_profile_image(100,100), class: "img-thumbnail" %></td>
+          <td><%= image_tag tweet.get_image, class: "img-thumbnail", size: "100x100" %></td>
           <td><%= tweet.text %></td>
         </tr>
         <% end %>
       </table>
+      <%= paginate @tweets %>
     </div>
   </div>
-  <%= paginate @tweets %>
 </div>

@@ -1,6 +1,6 @@
 <div class="continer">
   <div class="row my-3 ml-5">
-    <h4 style="background-color: #dcdcdc;">　User一覧　</h4>
+    <h4 style="background-color: #dcdcdc;">User一覧</h4>
   </div>
 
   <div class="row">
@@ -8,7 +8,7 @@
       <table class="table">
         <thead>
           <tr bgcolor="#dcdcdc">
-            <th>ユーザーID</th>
+            <th>会員ID</th>
             <th>氏名</th>
             <th>メールアドレス</th>
             <th>プロフィール画像</th>
@@ -20,12 +20,12 @@
           <td><%= user.id %></td>
           <td><%= link_to user.name, admin_user_path(user.id) %></td>
           <td><%= user.email %></td>
-          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><%= image_tag user.get_profile_image(100,100), class: "img-thumbnail" %></td>
           <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <% end %>
       </table>
+      <%= paginate @users %>
     </div>
   </div>
-  <%= paginate @users %>
 </div>
