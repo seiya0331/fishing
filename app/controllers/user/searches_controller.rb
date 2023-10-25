@@ -9,9 +9,9 @@ class User::SearchesController < ApplicationController
 
     # 選択したモデルに応じて検索を実行
     if @model  == "user"
-      @records = User.search_for(@content, @method)
+      @records = User.search_for(@content, @method).page(params[:page])
     else
-      @records = Tweet.search_for(@content, @method)
+      @records = Tweet.search_for(@content, @method).page(params[:page])
     end
   end
 end

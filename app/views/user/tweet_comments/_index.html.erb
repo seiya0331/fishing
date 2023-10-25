@@ -4,7 +4,7 @@
     <tr>
       <td>
         <%= link_to user_path(tweet_comment.user) do %>
-          <%= image_tag tweet_comment.user.get_profile_image(100,100) %><br>
+          <%= image_tag tweet_comment.user.get_profile_image(100,100), class: "img-thumbnail" %><br>
           <%= tweet_comment.user.name %>
         <% end %>
       </td>
