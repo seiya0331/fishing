@@ -19,8 +19,13 @@ class User::TweetsController < ApplicationController
 
   def update
     tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
-    redirect_to tweet_path(tweet.id)
+      if  tweet.update(tweet_params)
+          redirect_to tweet_path(tweet.id)
+          flash[:notice] = "更新しました。"
+      else
+          flash.now[:alert] = "更新できませんでした。"
+          render "edit"
+      end
   end
 
   def create
@@ -28,7 +33,7 @@ class User::TweetsController < ApplicationController
     @tweet.user_id = current_user.id
     if @tweet.save
       flash[:notice] = "投稿に成功しました。"
-      redirect_to tweets_path
+      redirect_to tweet_path(@tweet)
     else
       flash.now[:alert] = "投稿に失敗しました。"
       render :new
