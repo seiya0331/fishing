@@ -23,6 +23,7 @@
 
 
 ## 設計書
+![ER図](https://github.com/seiya0331/fishing/assets/141209682/ac681661-45be-41b5-acc5-e6fc5f064c58)
 
 ## 開発環境
 - OS : Linux(CentOS)
