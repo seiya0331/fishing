@@ -1,4 +1,6 @@
 class User::TweetsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def new
     @tweet = Tweet.new
   end
@@ -50,5 +52,12 @@ class User::TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweet).permit(:image, :text)
+  end
+
+  def ensure_correct_user
+    @tweet = Tweet.find(params[:id])
+    unless @tweet.user == current_user
+      redirect_to tweets_path
+    end
   end
 end

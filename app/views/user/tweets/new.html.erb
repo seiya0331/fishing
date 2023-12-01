@@ -9,7 +9,7 @@
         <%= f.file_field :image, class:"form-control",accept: "image/*" %>
       </div>
       <%= f.label :テキスト %>
-      <%= f.text_area :text, class: "form-control", size: "20x10" %>
+      <%= f.text_area :text, placeholder:"200文字以内で入力してください", class: "form-control", size: "20x10" %>
       <%= f.submit '投稿' , class: "btn btn-secondary" %>
     <% end %>
   </div>

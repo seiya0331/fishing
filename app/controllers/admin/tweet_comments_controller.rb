@@ -1,4 +1,5 @@
 class Admin::TweetCommentsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @comments = TweetComment.all.page(params[:page]).per(5)
   end

@@ -5,6 +5,7 @@ class Tweet < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :text, presence: true, length: { maximum: 200 }
+  default_scope { order(created_at: :desc) }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
