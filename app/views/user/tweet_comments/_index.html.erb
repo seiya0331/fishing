@@ -7,6 +7,7 @@
           <%= image_tag tweet_comment.user.get_profile_image(100,100), class: "img-thumbnail" %><br>
           <%= tweet_comment.user.name %>
         <% end %>
+        <%= tweet_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </td>
       <td><%= tweet_comment.comment %></td>
       <td>
